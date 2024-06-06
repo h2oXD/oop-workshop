@@ -32,7 +32,13 @@ class HomeController extends Controller
     public function detail($id)
     {   
         $data['post'] = $this->posts->postByID($id);
-        
+        if(!empty($data['post'])){
+            $view = [
+                'view' => $data['post']['view'] + 1
+            ];
+            $this->posts->update($id , $view);
+        }
+
         $this->renderClient(__FUNCTION__, $data);
     }
     public function list()

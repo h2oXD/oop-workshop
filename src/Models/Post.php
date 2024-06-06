@@ -30,7 +30,7 @@ class Post extends Model
             ->from($this->tableName, 'p')
             ->innerJoin('p', 'categories', 'c', 'c.id = p.category_id')
             ->innerJoin('p', 'authors', 'a', 'a.id = p.author_id')
-            ->orderBy('id', 'desc')
+            ->orderBy('p.id', 'desc')
             ->fetchAllAssociative();
     }
 

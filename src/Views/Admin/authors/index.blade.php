@@ -57,7 +57,7 @@
                                                     <td>{{ $item['name'] }}</td>
                                                     <td><img width="50px" src="{{ url($item['avatar']) }}" alt="avatar">
                                                     </td>
-                                                    <td class="d-flex justify-content-evenly">
+                                                    <td class="text-center">
                                                         <a href="{{ url('admin/authors/' . $item['id'] . '/show') }}"
                                                             title="Xem chi tiết"><i class="ti-eye ms-2"></i></a>
                                                         <a href="{{ url('admin/authors/' . $item['id'] . '/edit') }}"

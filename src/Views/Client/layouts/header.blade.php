@@ -30,6 +30,9 @@
                             <a class="nav-link" href="{{ url('logout') }}">Đăng xuất</a>
                         </li>
                     @endif
+                    @if (isset($_SESSION['user']) && $_SESSION['user']['role'] == 1)
+                        <a class="nav-link" href="{{url('admin')}}">Tới trang admin</a>
+                    @endif
                 </ul>
             </div>
 

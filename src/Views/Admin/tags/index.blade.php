@@ -22,16 +22,25 @@
                                     </div>
                                 </div>
                                 <div class="QA_table mb_30">
-                                    @if (isset($_SESSION['status']) && !empty($_SESSION['status']))
-                                    {{-- @foreach ($_SESSION['status'] as $item) --}}
-                                        <div class="alert text-white bg-success" role="alert">
-                                            <div class="alert-text">{{$_SESSION['status']}}</div>
+                                    @if (isset($_SESSION['errors']) && !empty($_SESSION['errors']))
+                                        <div class="alert text-white bg-danger" role="alert">
+                                            @foreach ($_SESSION['errors'] as $item)
+                                                <div class="alert-text"><i class="ti-alert"> </i>{{ $item }}</div>
+                                            @endforeach
                                         </div>
-                                    {{-- @endforeach --}}
-                                    @php
-                                        unset($_SESSION['status']);
-                                    @endphp
-                                @endif
+
+                                        @php
+                                            unset($_SESSION['errors']);
+                                        @endphp
+                                    @endif
+                                    @if (isset($_SESSION['status']) && !empty($_SESSION['status']))
+                                        <div class="alert text-white bg-success" role="alert">
+                                            <div class="alert-text">{{ $_SESSION['status'] }}</div>
+                                        </div>
+                                        @php
+                                            unset($_SESSION['status']);
+                                        @endphp
+                                    @endif
                                     <table class="table table-hover lms_table_active ">
                                         <thead>
                                             <tr>

@@ -91,7 +91,7 @@ class TagController extends Controller
             $this->tag->delete($id);
             $_SESSION['status'] = 'Thao tác thành công';
         } catch (\Throwable $th) {
-            $_SESSION['errors'][] = 'Không thể xoá danh mục đang có liên kết';
+            $_SESSION['errors'][] = 'Không thể xoá thẻ (tag) đang có liên kết';
         }
         
         back(url('admin/tags'));

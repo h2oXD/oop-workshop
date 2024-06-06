@@ -127,7 +127,7 @@
                                         <h4><a href="{{url('detail/'.$item['id'])}}" class="post-title">{{$item['title']}}</a></h4>
                                         <ul class="card-meta list-inline mb-0">
                                             <li class="list-inline-item mb-0">
-                                                <i class="ti-calendar"></i>14 jan, 2020
+                                                <i class="ti-calendar"></i>{{$item['created_at']}}
                                             </li>
                                             <li class="list-inline-item mb-0">
                                                 <i class="ti-timer"></i>2 Min To Read
@@ -221,7 +221,7 @@
                                             </li>
                                         </ul>
                                         <p>{{ $item['excerpt'] }}</p>
-                                        <a href="{{url('detail/'.$item['id'])}}" class="btn btn-outline-primary">Read More</a>
+                                        <a href="{{url('detail/'.$item['id'])}}" class="btn btn-outline-primary">Đọc thêm</a>
                                     </div>
                                 </article>
                             </div>
