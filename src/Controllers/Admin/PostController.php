@@ -100,12 +100,12 @@ class PostController extends Controller
 
     public function edit($id)
     {
-        $data['post'] = $this->post->findByID($id);
+        $data['post']       = $this->post->findByID($id);
         $data['categories'] = $this->category->all();
-        $data['tags'] = $this->tag->all();
-        $data['authors'] = $this->author->all();
-        $data['post_tag'] = $this->postTag->findByPostID($id);
-        
+        $data['tags']       = $this->tag->all();
+        $data['authors']    = $this->author->all();
+        $data['post_tag']   = $this->postTag->findByPostID($id);
+
         // dd($data['post_tag']);
         $this->renderAdmin(self::PATH_VIEW . __FUNCTION__, $data);
     }
@@ -126,8 +126,8 @@ class PostController extends Controller
         $validation->validate();
         if ($validation->fails()) {
             $_SESSION['errors'] = $validation->errors()->firstOfAll();
-            back(url('admin/posts/'.$id.'/edit'));
-        }else {
+            back(url('admin/posts/' . $id . '/edit'));
+        } else {
 
             $post = $this->post->findByID($id);
             $data = [
@@ -141,35 +141,29 @@ class PostController extends Controller
                 'is_trending'       => $_POST['is_trending']        ?? 0,
                 'is_editors_pick'   => $_POST['is_editors_pick']    ?? 0,
             ];
-
+            $check = false;
             if (!empty($_FILES['thumbnail']) && $_FILES['thumbnail']['size'] > 0) {
+                $check = true;
                 $from = $_FILES['thumbnail']['tmp_name'];
                 $to = '/assets/uploads/' . time() . $_FILES['thumbnail']['name'];
-                if (move_uploaded_file($from, PATH_ROOT . $to)) {
-
-                    $data['thumbnail'] = $to;
-
-                    $this->post->update($id, $data);
-                    $this->postTag->deleteTagByPostID($id);
-                    $this->postTag->insertPostTag($id, $_POST['tags']);
-
-                    if ($post['thumbnail'] && file_exists(PATH_ROOT . $post['thumbnail'])) {
-                        unlink(PATH_ROOT . $post['thumbnail']);
-                    }
-
-                    $_SESSION['status'] = 'Thao tác thành công';
-                    back(url('admin/posts'));
-                } 
-            }else {
-
-                $data['thumbnail'] = $post['thumbnail'];
-                $this->post->update($id, $data);
-                $this->postTag->deleteTagByPostID($id);
-                $this->postTag->insertPostTag($id, $_POST['tags']);
-
-                $_SESSION['status'] = 'Thao tác thành công';
-                back(url('admin/posts'));
             }
+
+            if (move_uploaded_file($from, PATH_ROOT . $to)) {
+                $data['thumbnail'] = $to;
+            } else {
+                $data['thumbnail'] = $post['thumbnail'];
+            }
+
+            $this->post->update($id, $data);
+            $this->postTag->deleteTagByPostID($id);
+            $this->postTag->insertPostTag($id, $_POST['tags']);
+
+            if ($check && $post['thumbnail'] && file_exists(PATH_ROOT . $post['thumbnail'])) {
+                unlink(PATH_ROOT . $post['thumbnail']);
+            }
+
+            $_SESSION['status'] = 'Thao tác thành công';
+            back(url("admin/posts/$id/edit"));
         }
     }
 

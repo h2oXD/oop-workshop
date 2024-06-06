@@ -34,6 +34,14 @@
                                             unset($_SESSION['errors']);
                                         @endphp
                                     @endif
+                                    @if (isset($_SESSION['status']) && !empty($_SESSION['status']))
+                                        <div class="alert text-white bg-success" role="alert">
+                                            <div class="alert-text">{{ $_SESSION['status'] }}</div>
+                                        </div>
+                                        @php
+                                            unset($_SESSION['status']);
+                                        @endphp
+                                    @endif
                                     <form action="{{ url('admin/posts/' . $post['id'] . '/update') }}" method="POST"
                                         enctype="multipart/form-data">
                                         <div class="row mb-3">
