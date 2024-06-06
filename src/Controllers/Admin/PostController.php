@@ -105,7 +105,7 @@ class PostController extends Controller
         $data['tags'] = $this->tag->all();
         $data['authors'] = $this->author->all();
         // dd($data['tags']);
-        dd($this->postTag->getTagByPostID($id));
+        // dd($this->postTag->getTagByPostID($id));
         $this->renderAdmin(self::PATH_VIEW . __FUNCTION__,$data);
     }
 
