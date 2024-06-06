@@ -86,21 +86,27 @@
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-md-6">
-                                                <input @if($post['is_show_home'] == 1) checked @endif value="1" name="is_show_home" class="form-check-input"
-                                                    type="checkbox">
+                                                <input @if ($post['is_show_home'] == 1) checked @endif value="1"
+                                                    name="is_show_home" class="form-check-input" type="checkbox">
                                                 <label class="form-label" for="">Is Show Home</label><br>
-                                                <input @if($post['is_trending'] == 1) checked @endif value="1" name="is_trending" class="form-check-input"
-                                                    type="checkbox">
+                                                <input @if ($post['is_trending'] == 1) checked @endif value="1"
+                                                    name="is_trending" class="form-check-input" type="checkbox">
                                                 <label class="form-label" for="">Is Trending</label><br>
-                                                <input @if($post['is_editors_pick'] == 1) checked @endif value="1" name="is_editors_pick" class="form-check-input"
-                                                    type="checkbox">
+                                                <input @if ($post['is_editors_pick'] == 1) checked @endif value="1"
+                                                    name="is_editors_pick" class="form-check-input" type="checkbox">
                                                 <label class="form-label" for="">Is Editors Pick</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Thẻ (tags)</label>
                                                 <select name="tags[]" class="form-select" multiple>
                                                     @foreach ($tags as $item)
-                                                        <option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+                                                        <option
+                                                        @foreach ($post_tag as $ptag)
+                                                            @if ($item['id'] == $ptag['tag_id'])
+                                                                selected
+                                                            @endif 
+                                                        @endforeach
+                                                            value="{{ $item['id'] }}">{{ $item['name'] }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -108,7 +114,7 @@
                                         <div class="row mb-3">
                                             <div class="col-md-12">
                                                 <label class="form-label">Nội dung</label><br>
-                                                <textarea class="form-control" name="content" maxlength="255" id="post_content" rows="10">{{$post['content']}}</textarea>
+                                                <textarea class="form-control" name="content" maxlength="255" id="post_content" rows="10">{{ $post['content'] }}</textarea>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Cập nhật</button>
