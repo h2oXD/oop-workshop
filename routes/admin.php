@@ -6,11 +6,14 @@ use Fixbu\Assignment\Controllers\Admin\DashboardController;
 use Fixbu\Assignment\Controllers\Admin\PostController;
 use Fixbu\Assignment\Controllers\Admin\TagController;
 use Fixbu\Assignment\Controllers\Admin\UserController;
-// $router->before('GET|POST', '/admin/*.*', function() {
-//     if (!isset($_SESSION['user'])) {
-//         back(url('login'));
-//     }
-// });
+$router->before('GET|POST', '/admin/*.*', function() {
+    if (!isset($_SESSION['user'])) {
+        back(url('login'));
+    }   
+    if($_SESSION['user']['role'] != 1){
+        back(url(''));
+    }
+});
 
 
 $router->mount('/admin', function () use ($router) {

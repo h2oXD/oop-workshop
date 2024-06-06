@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Thêm mới người dùng
+    Cập nhật tác giả
 @endsection
 @section('content')
     <div class="main_content_iner ">
@@ -13,10 +13,10 @@
                         <div class="white_card_body">
                             <div class="QA_section">
                                 <div class="white_box_tittle list_header">
-                                    <h4>Thêm mới người dùng</h4>
+                                    <h4>Cập nhật tác giả</h4>
                                     <div class="box_right d-flex align-items-center lms_block">
                                         <div class="add_button ms-2 me-2">
-                                            <a style="color: white" href="{{ url('admin/users') }}"><button
+                                            <a style="color: white" href="{{ url('admin/authors') }}"><button
                                                     class="btn btn-warning">Danh sách</button></a>
 
                                         </div>
@@ -42,40 +42,22 @@
                                             unset($_SESSION['status']);
                                         @endphp
                                     @endif
-                                    <form action="{{ url('admin/users/store') }}" method="POST"
+                                    <form action="{{ url('admin/authors/'.$author['id'].'/update') }}" method="POST"
                                         enctype="multipart/form-data">
-                                        <div class="row mb-3">
-                                            <div class=" col-md-6">
-                                                <label class="form-label">Email</label>
-                                                <input type="email" class="form-control" name="email"
-                                                    placeholder="Email">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label">Password</label>
-                                                <input type="password" class="form-control" name="password"
-                                                    placeholder="Password">
-                                            </div>
-                                        </div>
                                         <div class="row mb-3">
 
                                             <div class="col-md-6">
                                                 <label class="form-label">Họ và tên</label>
-                                                <input type="text" class="form-control" name="fullName"
-                                                    placeholder="FullName">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label">Vai trò</label>
-                                                <select class="form-select" name="role" id="">
-                                                    <option value="0">Người dùng</option>
-                                                    <option selected value="1">Quản trị viên</option>
-                                                </select>
+                                                <input value="{{$author['name']}}" type="text" class="form-control" name="name"
+                                                    placeholder="Name">
                                             </div>
                                             <div class="col-md-3">
                                                 <label class="form-label">Ảnh đại diện</label>
                                                 <input type="file" name="avatar" class="form-control">
+                                                <img width="80px" src="{{url($author['avatar'])}}" alt="">
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Thêm mới</button>
+                                        <button type="submit" class="btn btn-primary">Cập nhật</button>
                                     </form>
                                 </div>
                             </div>

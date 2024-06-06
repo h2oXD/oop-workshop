@@ -48,7 +48,7 @@ class RegisterController extends Controller
                     back(url('register'));
                 } else {
                     $this->user->insert($data);
-                    $_SESSION['success'] = 'Đăng ký thành công';
+                    $_SESSION['status'] = 'Đăng ký thành công';
                     back(url('register'));
                 }
             } catch (\Throwable $th) {

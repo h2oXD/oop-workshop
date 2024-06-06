@@ -21,7 +21,14 @@
                                 </div>
                             </div>
                             <div class="QA_table mb_30">
-
+                                @if (isset($_SESSION['status']) && !empty($_SESSION['status']))
+                                        <div class="alert text-white bg-success" role="alert">
+                                            <div class="alert-text">{{ $_SESSION['status'] }}</div>
+                                        </div>
+                                        @php
+                                            unset($_SESSION['status']);
+                                        @endphp
+                                    @endif
                                 <table class="table table-hover lms_table_active ">
                                     <thead>
                                         <tr>
@@ -40,7 +47,7 @@
                                         <tr>                                   
                                             <td>{{$item['id']}}</td>
                                             <td>{{$item['fullName']}}</td>
-                                            <td><img width="80px" src="{{$item['avatar']}}" alt="avatar"></td>
+                                            <td><img width="50px" src="{{url($item['avatar'])}}" alt="avatar"></td>
                                             <td>{{$item['email']}}</td>
                                             <td>{!!$item['role'] ? '<span class="badge bg-danger">Admin</span>' : '<span class="badge bg-secondary">Member</span>'!!}</td>
                                             <td>{{$item['created_at']}}</td>

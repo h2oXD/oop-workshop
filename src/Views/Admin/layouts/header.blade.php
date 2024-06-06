@@ -16,7 +16,10 @@
                     </div>
                     <span class="f_s_14 f_w_400 ml_25 white_text text_white">Apps</span>
                 </div>
+                
                 <div class="header_right d-flex justify-content-between align-items-center">
+                <a href="{{url('')}}"><button class="btn btn-danger">Về trang chủ</button></a>
+
                     <div class="header_notification_warp d-flex align-items-center">
                         <li>
                             <a class="bell_notification_clicker nav-link-notify" href="#"> <img

@@ -87,7 +87,13 @@ class CategoryController extends Controller
 
     public function delete($id)
     {
-        $this->category->delete($id);
+        try {
+            $this->category->delete($id);
+            $_SESSION['status'] = 'Thao tác thành công';
+        } catch (\Throwable $th) {
+            $_SESSION['errors'][] = 'Không thể xoá danh mục đang có liên kết';
+        }
+        
         back(url('admin/categories'));
     }
 }

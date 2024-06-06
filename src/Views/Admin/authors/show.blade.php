@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Chi tiết người dùng
+    Chi tiết tác giả
 @endsection
 @section('content')
     <div class="main_content_iner ">
@@ -14,10 +14,10 @@
                         <div class="white_card_body">
                             <div class="QA_section">
                                 <div class="white_box_tittle list_header">
-                                    <h4>Chi tiết người dùng</h4>
+                                    <h4>Chi tiết tác giả</h4>
                                     <div class="box_right d-flex align-items-center lms_block">
                                         <div class="add_button ms-2 me-2">
-                                            <a style="color: white" href="{{ url('admin/users') }}"><button
+                                            <a style="color: white" href="{{ url('admin/authors') }}"><button
                                                     class="btn btn-warning">Danh sách</button></a>
 
                                         </div>
@@ -34,7 +34,7 @@
                                     @endif
                                     <table class="">
                                         <thead>
-                                            @foreach ($users as $item => $value)
+                                            @foreach ($author as $item => $value)
                                                 <tr>
                                                     <th style="max-width: 100px">{{ $item }}</th>
                                                     @if (str_starts_with($item, 'avatar'))

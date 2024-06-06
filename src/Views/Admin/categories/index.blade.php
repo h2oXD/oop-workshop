@@ -23,6 +23,17 @@
                                     </div>
                                 </div>
                                 <div class="QA_table mb_30">
+                                    @if (isset($_SESSION['errors']) && !empty($_SESSION['errors']))
+                                        <div class="alert text-white bg-danger" role="alert">
+                                            @foreach ($_SESSION['errors'] as $item)
+                                                <div class="alert-text"><i class="ti-alert"> </i>{{ $item }}</div>
+                                            @endforeach
+                                        </div>
+
+                                        @php
+                                            unset($_SESSION['errors']);
+                                        @endphp
+                                    @endif
                                     @if (isset($_SESSION['status']) && !empty($_SESSION['status']))
                                         <div class="alert text-white bg-success" role="alert">
                                             <div class="alert-text">{{ $_SESSION['status'] }}</div>

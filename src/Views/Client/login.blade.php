@@ -17,12 +17,12 @@
                             unset($_SESSION['errors']);
                         @endphp
                     @endif
-                    @if (isset($_SESSION['success']) && !empty($_SESSION['success']))
+                    @if (isset($_SESSION['status']) && !empty($_SESSION['status']))
                         <div class="alert text-white bg-success" role="alert">
-                            <div class="alert-text">{{ $_SESSION['success'] }}</div>
+                            <div class="alert-text">{{ $_SESSION['status'] }}</div>
                         </div>
                         @php
-                            unset($_SESSION['success']);
+                            unset($_SESSION['status']);
                         @endphp
                     @endif
                     <form action="{{ url('handle-login') }}" method="post">
