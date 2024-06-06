@@ -14,7 +14,7 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{url('list')}}">
                             Danh sách
                         </a>
                     </li>   

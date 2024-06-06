@@ -52,7 +52,7 @@
                                             <td>{!!$item['role'] ? '<span class="badge bg-danger">Admin</span>' : '<span class="badge bg-secondary">Member</span>'!!}</td>
                                             <td>{{$item['created_at']}}</td>
                                             <td>{{$item['updated_at']}}</td>
-                                            <td class="d-flex justify-content-evenly">
+                                            <td>
                                                 <a href="{{url('admin/users/'.$item['id'].'/show')}}" title="Xem chi tiết" ><i class="ti-eye ms-2"></i></a>
                                                 <a href="{{url('admin/users/'.$item['id'].'/edit')}}" title="Sửa" ><i class="ti-pencil ms-2"></i></a>
                                                 <a href="{{url('admin/users/'.$item['id'].'/delete')}}" onclick="return confirm('Bạn có chắc muốn xoá')" title="Xoá" ><i class="ti-close ms-2"></i></a>

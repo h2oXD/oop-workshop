@@ -84,7 +84,7 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <h3 class="h4 mb-3"><a class="post-title" href="">{{ $item['title'] }}</a></h3>
+                                    <h3 class="h4 mb-3"><a class="post-title" href="{{url('detail/'.$item['id'])}}">{{ $item['title'] }}</a></h3>
                                     <ul class="card-meta list-inline">
                                         <li class="list-inline-item">
                                             <a href="" class="card-meta-author">
@@ -124,7 +124,7 @@
                                 <div class="card-body d-flex">
                                     <img class="card-img-sm" src="{{url($item['thumbnail'])}}">
                                     <div class="ml-3">
-                                        <h4><a href="" class="post-title">{{$item['title']}}</a></h4>
+                                        <h4><a href="{{url('detail/'.$item['id'])}}" class="post-title">{{$item['title']}}</a></h4>
                                         <ul class="card-meta list-inline mb-0">
                                             <li class="list-inline-item mb-0">
                                                 <i class="ti-calendar"></i>14 jan, 2020
@@ -199,7 +199,7 @@
                                     </div>
                                     <div class="card-body">
                                         <h3 class="h4 mb-3"><a class="post-title"
-                                                href="">{{ $item['title'] }}</a></h3>
+                                                href="{{url('detail/'.$item['id'])}}">{{ $item['title'] }}</a></h3>
                                         <ul class="card-meta list-inline">
                                             <li class="list-inline-item">
                                                 <a href="author-single.html" class="card-meta-author">
@@ -215,13 +215,13 @@
                                             </li>
                                             <li class="list-inline-item">
                                                 <ul class="card-meta-tag list-inline">
-                                                    <li class="list-inline-item"><a href="tags.html">Demo</a></li>
-                                                    <li class="list-inline-item"><a href="tags.html">Elements</a></li>
+                                                    <li class="list-inline-item"><a href="">Demo</a></li>
+                                                    <li class="list-inline-item"><a href="">Elements</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                         <p>{{ $item['excerpt'] }}</p>
-                                        <a href="" class="btn btn-outline-primary">Read More</a>
+                                        <a href="{{url('detail/'.$item['id'])}}" class="btn btn-outline-primary">Read More</a>
                                     </div>
                                 </article>
                             </div>

@@ -1,4 +1,5 @@
 <?php
+
 namespace Fixbu\Assignment\Controllers\Client;
 
 use Fixbu\Assignment\Commons\Controller;
@@ -26,10 +27,17 @@ class HomeController extends Controller
         $data['categories'] = $this->categories->all();
         $data['tags'] = $this->tags->all();
         $data['authors'] = $this->authors->all();
-        $this->renderClient(__FUNCTION__,$data);
+        $this->renderClient(__FUNCTION__, $data);
     }
-    public function detail()
+    public function detail($id)
+    {   
+        $data['post'] = $this->posts->postByID($id);
+        
+        $this->renderClient(__FUNCTION__, $data);
+    }
+    public function list()
     {
-        $this->renderClient(__FUNCTION__);
+        $data['posts'] = $this->posts->allPostAndJoin();
+        $this->renderClient(__FUNCTION__, $data);
     }
 }

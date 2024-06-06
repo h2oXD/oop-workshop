@@ -10,22 +10,22 @@
                 <div class=" col-lg-9   mb-5 mb-lg-0">
                     <article>
                         <div class="post-slider mb-4">
-                            <img src="images/post/post-2.jpg" class="card-img" alt="post-thumb">
+                            <img src="{{url($post['thumbnail'])}}" class="card-img" alt="post-thumb">
                         </div>
 
-                        <h1 class="h2">Customer Engage Marketing Marketing Strategy to Economy Structure Everyone. </h1>
+                        <h1 class="h2">{{$post['title']}}</h1>
                         <ul class="card-meta my-3 list-inline">
                             <li class="list-inline-item">
                                 <a href="author-single.html" class="card-meta-author">
-                                    <img src="images/john-doe.jpg">
-                                    <span>Charls Xaviar</span>
+                                    <img src="{{url($post['a_avatar'])}}">
+                                    <span>{{$post['a_name']}}</span>
                                 </a>
                             </li>
                             <li class="list-inline-item">
                                 <i class="ti-timer"></i>2 Min To Read
                             </li>
                             <li class="list-inline-item">
-                                <i class="ti-calendar"></i>14 jan, 2020
+                                <i class="ti-calendar"></i>{{$post['created_at']}}
                             </li>
                             <li class="list-inline-item">
                                 <ul class="card-meta-tag list-inline">
@@ -36,41 +36,13 @@
                             </li>
                         </ul>
                         <div class="content">
-                            <p>It’s no secret that the digital industry is booming. From exciting startups to global brands,
-                                companies are reaching out to digital agencies, responding to the new possibilities
-                                available. However, the industry is fast becoming overcrowded, heaving with agencies
-                                offering similar services — on the surface, at least. Producing creative, fresh projects is
-                                the key to standing out. Unique side projects are the best place to innovate, but balancing
-                                commercially and creatively lucrative work is tricky. So, this article looks at</p>
-                            <p>It’s no secret that the digital industry is booming. From exciting startups to global brands,
-                                companies
-                                are reaching out to digital agencies, responding to the new possibilities available.
-                                However, the industryis fast becoming overcrowded, heaving with agencies offering similar
-                                services — on the surface, at least.Producing creative, fresh projects is the key to
-                                standing out. Unique side projects are the best place toinnovate, but balancing commercially
-                                and creatively lucrative work is tricky. So, this article looks at</p>
-                            <p>It’s no secret that the digital industry is booming. From exciting startups to global brands,
-                                companies
-                                are reaching out to digital agencies, responding to the new possibilities available.
-                                However, the industryis fast becoming overcrowded, heaving with agencies offering similar
-                                services — on the surface, at least.
-                                Producing creative, fresh projects is the key to standing out. Unique side projects are the
-                                best place toinnovate, but balancing commercially and creatively lucrative work is tricky.
-                                So, this article looks at</p>
-                            <p>It’s no secret that the digital industry is booming. From exciting startups to global brands,
-                                companies
-                                are reaching out to digital agencies, responding to the new possibilities available.
-                                However, the industryis fast becoming overcrowded, heaving with agencies offering similar
-                                services — on the surface, at least.
-                                Producing creative, fresh projects is the key to standing out. Unique side projects are the
-                                best place toinnovate, but balancing commercially and creatively lucrative work is tricky.
-                                So, this article looks at</p>
+                            {!!$post['content']!!}
                         </div>
                     </article>
 
                 </div>
 
-                <div class="col-lg-9 col-md-12">
+                {{-- <div class="col-lg-9 col-md-12">
                     <div class="mb-5 border-top mt-4 pt-5">
                         <h3 class="mb-4">Comments</h3>
 
@@ -131,7 +103,7 @@
                             <button class="btn btn-primary" type="submit">Comment Now</button>
                         </form>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </div>

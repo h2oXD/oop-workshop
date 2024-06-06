@@ -76,9 +76,65 @@ class Post extends Model
             ->from($this->tableName, 'p')
             ->innerJoin('p', 'categories', 'c', 'c.id = p.category_id')
             ->innerJoin('p', 'authors', 'a', 'a.id = p.author_id')
+            ->where("p.status = 'published' AND p.is_show_home = 1")
             ->orderBy('id', 'desc')
             ->setMaxResults(6)
             ->fetchAllAssociative();
     }
-    
+    public function postByID($id)
+    {
+        return $this->queryBuilder
+            ->select(
+                'p.id',
+                'p.title',
+                'p.thumbnail',
+                'p.content',
+                'p.excerpt',
+                'p.view',
+                'p.status',
+                'p.is_editors_pick',
+                'p.is_trending',
+                'p.is_show_home',
+                'p.created_at',
+                'p.updated_at',
+                'c.name   as c_name',
+                'a.name   as a_name',
+                'a.avatar as a_avatar',
+            )
+            ->from($this->tableName, 'p')
+            ->innerJoin('p', 'categories', 'c', 'c.id = p.category_id')
+            ->innerJoin('p', 'authors', 'a', 'a.id = p.author_id')
+            ->where("p.status = 'published' AND p.is_show_home = 1 AND p.id = $id")
+            ->orderBy('id', 'desc')
+            ->setMaxResults(1)
+            ->fetchAssociative();
+    }
+    // public function postPick()
+    // {
+    //     return $this->queryBuilder
+    //         ->select(
+    //             'p.id',
+    //             'p.title',
+    //             'p.thumbnail',
+    //             'p.content',
+    //             'p.excerpt',
+    //             'p.view',
+    //             'p.status',
+    //             'p.is_editors_pick',
+    //             'p.is_trending',
+    //             'p.is_show_home',
+    //             'p.created_at',
+    //             'p.updated_at',
+    //             'c.name   as c_name',
+    //             'a.name   as a_name',
+    //             'a.avatar as a_avatar',
+    //         )
+    //         ->from($this->tableName, 'p')
+    //         ->innerJoin('p', 'categories', 'c',  'c.id = p.category_id')
+    //         ->innerJoin('p', 'authors',    'a',  'a.id = p.author_id')
+    //         ->where("p.status = 'published' AND p.is_show_home = 1 AND p.is_editors_pick = 1")
+    //         ->orderBy('id', 'desc')
+    //         ->setMaxResults(1)
+    //         ->fetchAllAssociative();
+    // }
 }
