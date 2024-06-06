@@ -77,7 +77,7 @@
                 <div class="col-lg-4 mb-5">
                     <h2 class="h5 section-title">Bài viết tuyển chọn</h2>
                     @foreach ($posts as $item)
-                        @if ($item['is_editors_pick'] === 1)
+                        @if ($item['is_editors_pick'] == 1)
                             <article class="card">
                                 <div class="post-slider slider-sm">
                                     <img src="{{ url($item['thumbnail']) }}" class="card-img-top" alt="post-thumb">
@@ -87,8 +87,8 @@
                                     <h3 class="h4 mb-3"><a class="post-title" href="">{{ $item['title'] }}</a></h3>
                                     <ul class="card-meta list-inline">
                                         <li class="list-inline-item">
-                                            <a href="author-single.html" class="card-meta-author">
-                                                <img src="">
+                                            <a href="" class="card-meta-author">
+                                                <img src="{{url($item['a_avatar'])}}">
                                                 <span>{{ $item['a_name'] }}</span>
                                             </a>
                                         </li>
@@ -111,6 +111,7 @@
                                 </div>
                             </article>
                         @endif
+                        
                     @endforeach
                 </div>
 
@@ -118,12 +119,12 @@
                 <div class="col-lg-4 mb-5">
                     <h2 class="h5 section-title">Bài viết thịnh hành</h2>
                     @foreach ($posts as $item)
-                        @if ($item['is_trending'] === 1)
+                        @if ($item['is_trending'] == 1)
                             <article class="card mb-4">
                                 <div class="card-body d-flex">
                                     <img class="card-img-sm" src="{{url($item['thumbnail'])}}">
                                     <div class="ml-3">
-                                        <h4><a href="post-details.html" class="post-title">{{$item['title']}}</a></h4>
+                                        <h4><a href="" class="post-title">{{$item['title']}}</a></h4>
                                         <ul class="card-meta list-inline mb-0">
                                             <li class="list-inline-item mb-0">
                                                 <i class="ti-calendar"></i>14 jan, 2020
@@ -144,7 +145,7 @@
 
                     <article class="card">
                         <div class="post-slider slider-sm">
-                            <img src="images/post/post-5.jpg" class="card-img-top" alt="post-thumb">
+                            <img src="{{assetClient('images/post/post-5.jpg')}}" class="card-img-top" alt="post-thumb">
                         </div>
                         <div class="card-body">
                             <h3 class="h4 mb-3"><a class="post-title" href="post-details.html">How To Make Cupcakes and
@@ -198,11 +199,11 @@
                                     </div>
                                     <div class="card-body">
                                         <h3 class="h4 mb-3"><a class="post-title"
-                                                href="post/elements/">{{ $item['title'] }}</a></h3>
+                                                href="">{{ $item['title'] }}</a></h3>
                                         <ul class="card-meta list-inline">
                                             <li class="list-inline-item">
                                                 <a href="author-single.html" class="card-meta-author">
-                                                    <img src="" alt="{{ $item['a_name'] }}">
+                                                    <img src="{{url($item['a_avatar'])}}" alt="{{ $item['a_name'] }}">
                                                     <span>{{ $item['a_name'] }}</span>
                                                 </a>
                                             </li>
@@ -220,7 +221,7 @@
                                             </li>
                                         </ul>
                                         <p>{{ $item['excerpt'] }}</p>
-                                        <a href="post/elements/" class="btn btn-outline-primary">Read More</a>
+                                        <a href="" class="btn btn-outline-primary">Read More</a>
                                     </div>
                                 </article>
                             </div>
@@ -239,8 +240,8 @@
                                 <img class="widget-author-image" src="{{url($item['avatar'])}}">
                             </div>
                             <div class="media-body">
-                                <h5 class="mb-1"><a class="post-title" href="author-single.html">{{$item['name']}}</a></h5>
-                                <span>Author &amp; developer of Bexer, Biztrox theme</span>
+                                <h5 class="mb-1"><a class="post-title" href="">{{$item['name']}}</a></h5>
+                                <span></span>
                             </div>
                         </div>
                         @endforeach

@@ -22,7 +22,7 @@ class HomeController extends Controller
     }
     public function index()
     {
-        $data['posts'] = $this->posts->allPostAndJoin();
+        $data['posts'] = $this->posts->homePostAndJoin();
         $data['categories'] = $this->categories->all();
         $data['tags'] = $this->tags->all();
         $data['authors'] = $this->authors->all();

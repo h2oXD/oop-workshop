@@ -42,9 +42,9 @@
                                                 <th class="text-center" scope="col">Tác giả</th>
                                                 <th class="text-center" scope="col">Lượt xem</th>
                                                 <th class="text-center" scope="col">Trạng thái</th>
-                                                <th class="text-center" scope="col">Is Editors Pick</th>
                                                 <th class="text-center" scope="col">Is Trending</th>
                                                 <th class="text-center" scope="col">Is Show Home</th>
+                                                <th class="text-center" scope="col">Is Editors Pick</th>
                                                 <th class="text-center" class="d-flex justify-content-center"
                                                     scope="col">Action</th>
                                             </tr>
