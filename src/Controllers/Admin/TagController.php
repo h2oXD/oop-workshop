@@ -77,9 +77,10 @@ class TagController extends Controller
             back(url("admin/tags/$id/edit"));
         } else {
             $data = [
-                'name' => $_POST['name'],
+                'name'              => $_POST['name'],
+                'updated_at'        => date('Y-m-d H:i:s'),
             ];
-            $this->tag->insert($data);
+            $this->tag->update($id,$data);
             $_SESSION['status'] = 'Thao tác thành công';
             back(url('admin/tags'));
         }

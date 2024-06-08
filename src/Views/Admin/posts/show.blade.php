@@ -38,7 +38,12 @@
                                                 <tr>
                                                     <th style="max-width: 100px">{{ $item }}</th>
                                                     @if (str_starts_with($item, 'is_'))
-                                                        <th style="max-width: 950px">{!! $value ? '<span class="badge bg-success">YES</span>' : '<span class="badge bg-warning">NO</span>' !!}</th> 
+                                                        <th style="max-width: 950px">{!! $value ? '<span class="badge bg-success">YES</span>' : '<span class="badge bg-warning">NO</span>' !!}</th>
+                                                    @elseif (str_starts_with($item, 'content'))
+                                                        <th style="max-width: 950px">{!! $value !!}</th>
+                                                    @elseif(str_starts_with($item, 'thumbnail'))
+                                                        <th style="max-width: 950px"><img width="50px"
+                                                                src="{{ url($value) }}" alt=""></th>
                                                     @else
                                                         <th style="max-width: 950px">{{ $value }}</th>
                                                     @endif

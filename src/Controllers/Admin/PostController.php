@@ -47,7 +47,7 @@ class PostController extends Controller
     {
         $validator = new Validator();
         $validation = $validator->make($_POST + $_FILES, [
-            'title'             => 'required|min:3|max:50',
+            'title'             => 'required|min:3|max:100',
             'category_id'       => 'required|numeric',
             'author_id'         => 'required|numeric',
             'excerpt'           => 'required|min:3|max:255',
@@ -93,7 +93,7 @@ class PostController extends Controller
 
     public function show($id)
     {
-        $data['posts'] = $this->post->findByID($id);
+        $data['posts'] = $this->post->postByID($id);
 
         $this->renderAdmin(self::PATH_VIEW . __FUNCTION__, $data);
     }
@@ -114,7 +114,7 @@ class PostController extends Controller
     {
         $validator = new Validator();
         $validation = $validator->make($_POST + $_FILES, [
-            'title'             => 'required|min:3|max:50',
+            'title'             => 'required|min:3|max:100',
             'category_id'       => 'required|numeric',
             'author_id'         => 'required|numeric',
             'excerpt'           => 'required|min:3|max:255',
@@ -140,6 +140,7 @@ class PostController extends Controller
                 'is_show_home'      => $_POST['is_show_home']       ?? 0,
                 'is_trending'       => $_POST['is_trending']        ?? 0,
                 'is_editors_pick'   => $_POST['is_editors_pick']    ?? 0,
+                'updated_at'        => date('Y-m-d H:i:s'),
             ];
             $check = false;
             if (!empty($_FILES['thumbnail']) && $_FILES['thumbnail']['size'] > 0) {

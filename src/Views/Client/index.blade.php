@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 mx-auto">
-                    <h1 class="mb-5">What Would You <br> Like To Read Today?</h1>
+                    <h1 class="mb-5">Bạn muốn đọc gì <br> ngày hôm nay?</h1>
                     <ul class="list-inline widget-list-inline">
                         @foreach ($categories as $item)
                             <li class="list-inline-item"><a href="">{{ $item['name'] }}</a></li>
@@ -76,58 +76,59 @@
 
                 <div class="col-lg-4 mb-5">
                     <h2 class="h5 section-title">Bài viết tuyển chọn</h2>
-                    @foreach ($posts as $item)
-                        @if ($item['is_editors_pick'] == 1)
-                            <article class="card">
-                                <div class="post-slider slider-sm">
-                                    <img src="{{ url($item['thumbnail']) }}" class="card-img-top" alt="post-thumb">
-                                </div>
+                    @if (!empty($post_pick))
+                        <article class="card">
+                            <div class="post-slider slider-sm">
+                                <img src="{{ url($post_pick['thumbnail']) }}" class="card-img-top" alt="post-thumb">
+                            </div>
 
-                                <div class="card-body">
-                                    <h3 class="h4 mb-3"><a class="post-title" href="{{url('detail/'.$item['id'])}}">{{ $item['title'] }}</a></h3>
-                                    <ul class="card-meta list-inline">
-                                        <li class="list-inline-item">
-                                            <a href="" class="card-meta-author">
-                                                <img src="{{url($item['a_avatar'])}}">
-                                                <span>{{ $item['a_name'] }}</span>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <i class="ti-timer"></i>2 Min To Read
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <i class="ti-calendar"></i>{{ $item['created_at'] }}
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <ul class="card-meta-tag list-inline">
-                                                <li class="list-inline-item"><a href="tags.html">Color</a></li>
-                                                <li class="list-inline-item"><a href="tags.html">Recipe</a></li>
-                                                <li class="list-inline-item"><a href="tags.html">Fish</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <p>{{ $item['excerpt'] }}</p>
-                                    <a href="{{ url('detail') }}" class="btn btn-outline-primary">Đọc thêm</a>
-                                </div>
-                            </article>
-                        @endif
-                        
-                    @endforeach
+                            <div class="card-body">
+                                <h3 class="h4 mb-3"><a class="post-title"
+                                        href="{{ url('detail/' . $post_pick['id']) }}">{{ $post_pick['title'] }}</a></h3>
+                                <ul class="card-meta list-inline">
+                                    <li class="list-inline-item">
+                                        <a href="" class="card-meta-author">
+                                            <img src="{{ url($post_pick['a_avatar']) }}">
+                                            <span>{{ $post_pick['a_name'] }}</span>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="ti-timer"></i>2 Min To Read
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="ti-calendar"></i>{{ $post_pick['created_at'] }}
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <ul class="card-meta-tag list-inline">
+                                            <li class="list-inline-item"><a href="">{{ $post_pick['c_name'] }}</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <p>{{ $post_pick['excerpt'] }}</p>
+                                <a href="{{ url('detail/' . $post_pick['id']) }}" class="btn btn-outline-primary">Đọc
+                                    thêm</a>
+                            </div>
+                        </article>
+                    @endif
+
                 </div>
+
 
 
                 <div class="col-lg-4 mb-5">
                     <h2 class="h5 section-title">Bài viết thịnh hành</h2>
-                    @foreach ($posts as $item)
+                    @foreach ($post_trending as $item)
                         @if ($item['is_trending'] == 1)
                             <article class="card mb-4">
                                 <div class="card-body d-flex">
-                                    <img class="card-img-sm" src="{{url($item['thumbnail'])}}">
+                                    <img class="card-img-sm" src="{{ url($item['thumbnail']) }}">
                                     <div class="ml-3">
-                                        <h4><a href="{{url('detail/'.$item['id'])}}" class="post-title">{{$item['title']}}</a></h4>
+                                        <h4><a href="{{ url('detail/' . $item['id']) }}"
+                                                class="post-title">{{ $item['title'] }}</a></h4>
                                         <ul class="card-meta list-inline mb-0">
                                             <li class="list-inline-item mb-0">
-                                                <i class="ti-calendar"></i>{{$item['created_at']}}
+                                                <i class="ti-calendar"></i>{{ $item['created_at'] }}
                                             </li>
                                             <li class="list-inline-item mb-0">
                                                 <i class="ti-timer"></i>2 Min To Read
@@ -142,40 +143,40 @@
 
                 <div class="col-lg-4 mb-5">
                     <h2 class="h5 section-title">Bài viết nhiều lượt xem nhất</h2>
-
                     <article class="card">
                         <div class="post-slider slider-sm">
-                            <img src="{{assetClient('images/post/post-5.jpg')}}" class="card-img-top" alt="post-thumb">
+                            <img src="{{ url($max_view_post['thumbnail']) }}" class="card-img-top" alt="post-thumb">
                         </div>
                         <div class="card-body">
-                            <h3 class="h4 mb-3"><a class="post-title" href="post-details.html">How To Make Cupcakes and
-                                    Cashmere
-                                    Recipe At Home</a></h3>
+                            <h3 class="h4 mb-3"><a class="post-title"
+                                    href="{{ url('detail/' . $max_view_post['id']) }}">{{ $max_view_post['title'] }}</a>
+                            </h3>
                             <ul class="card-meta list-inline">
                                 <li class="list-inline-item">
                                     <a href="author-single.html" class="card-meta-author">
-                                        <img src="images/kate-stone.jpg" alt="Kate Stone">
-                                        <span>Kate Stone</span>
+                                        <img src="{{ url($max_view_post['a_avatar']) }}" alt="Kate Stone">
+                                        <span>{{ $max_view_post['a_name'] }}</span>
                                     </a>
                                 </li>
                                 <li class="list-inline-item">
                                     <i class="ti-timer"></i>2 Min To Read
                                 </li>
                                 <li class="list-inline-item">
-                                    <i class="ti-calendar"></i>14 jan, 2020
+                                    <i class="ti-calendar"></i>{{ $max_view_post['created_at'] }}
                                 </li>
                                 <li class="list-inline-item">
                                     <ul class="card-meta-tag list-inline">
-                                        <li class="list-inline-item"><a href="tags.html">City</a></li>
-                                        <li class="list-inline-item"><a href="tags.html">Food</a></li>
-                                        <li class="list-inline-item"><a href="tags.html">Taste</a></li>
+                                        <li class="list-inline-item"><a href="">{{ $max_view_post['c_name'] }}</a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
-                            <p>It’s no secret that the digital industry is booming. From exciting startups to …</p>
-                            <a href="post-details.html" class="btn btn-outline-primary">Read More</a>
+                            <p>{{ $max_view_post['excerpt'] }}</p>
+                            <a href="{{ url('detail/' . $max_view_post['id']) }}" class="btn btn-outline-primary">Đọc
+                                thêm</a>
                         </div>
                     </article>
+
                 </div>
                 <div class="col-12">
                     <div class="border-bottom border-default"></div>
@@ -199,11 +200,11 @@
                                     </div>
                                     <div class="card-body">
                                         <h3 class="h4 mb-3"><a class="post-title"
-                                                href="{{url('detail/'.$item['id'])}}">{{ $item['title'] }}</a></h3>
+                                                href="{{ url('detail/' . $item['id']) }}">{{ $item['title'] }}</a></h3>
                                         <ul class="card-meta list-inline">
                                             <li class="list-inline-item">
                                                 <a href="author-single.html" class="card-meta-author">
-                                                    <img src="{{url($item['a_avatar'])}}" alt="{{ $item['a_name'] }}">
+                                                    <img src="{{ url($item['a_avatar']) }}" alt="{{ $item['a_name'] }}">
                                                     <span>{{ $item['a_name'] }}</span>
                                                 </a>
                                             </li>
@@ -215,13 +216,14 @@
                                             </li>
                                             <li class="list-inline-item">
                                                 <ul class="card-meta-tag list-inline">
-                                                    <li class="list-inline-item"><a href="">Demo</a></li>
-                                                    <li class="list-inline-item"><a href="">Elements</a></li>
+                                                    <li class="list-inline-item"><a
+                                                            href="">{{ $item['c_name'] }}</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                         <p>{{ $item['excerpt'] }}</p>
-                                        <a href="{{url('detail/'.$item['id'])}}" class="btn btn-outline-primary">Đọc thêm</a>
+                                        <a href="{{ url('detail/' . $item['id']) }}" class="btn btn-outline-primary">Đọc
+                                            thêm</a>
                                     </div>
                                 </article>
                             </div>
@@ -235,42 +237,50 @@
                     <div class="widget widget-author">
                         <h4 class="widget-title">Các tác giả</h4>
                         @foreach ($authors as $item)
-                        <div class="media align-items-center">
-                            <div class="mr-3">
-                                <img class="widget-author-image" src="{{url($item['avatar'])}}">
+                            <div class="media align-items-center">
+                                <div class="mr-3">
+                                    <img class="widget-author-image" src="{{ url($item['avatar']) }}">
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="mb-1"><a class="post-title" href="">{{ $item['name'] }}</a></h5>
+                                    <span></span>
+                                </div>
                             </div>
-                            <div class="media-body">
-                                <h5 class="mb-1"><a class="post-title" href="">{{$item['name']}}</a></h5>
-                                <span></span>
-                            </div>
-                        </div>
                         @endforeach
-                        
+
                     </div>
 
+
+
+                    <!-- tags -->
+                    <div class="widget">
+                        <h4 class="widget-title"><span>Danh mục</span></h4>
+                        <ul class="list-inline widget-list-inline widget-card">
+
+                            @foreach ($count_post as $item)
+                                <li class="list-inline-item">
+                                    @foreach ($categories as $value)
+                                        @if ($value['id'] == $item['category_id'])
+                                            <a href="">{{ $value['name'] }}<small
+                                                    class="ml-auto">({{ $item['post_count'] }})</small></a>
+                                        @endif
+                                    @endforeach
+
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
 
                     <!-- categories -->
                     <div class="widget widget-categories">
-                        <h4 class="widget-title"><span>Danh mục</span></h4>
-                        <ul class="list-unstyled widget-list">
-                            @foreach ($categories as $item)
-                                <li><a href="" class="d-flex">{{ $item['name'] }}<small
-                                            class="ml-auto">(4)</small></a></li>
-                            @endforeach
-
-                        </ul>
-                    </div>
-                    <!-- tags -->
-                    <div class="widget">
                         <h4 class="widget-title"><span>Tags</span></h4>
-                        <ul class="list-inline widget-list-inline widget-card">
+                        <ul class="list-unstyled widget-list">
                             @foreach ($tags as $item)
-                                <li class="list-inline-item"><a href="">{{ $item['name'] }}</a></li>
+                                <li><a class="d-flex" href="">{{ $item['name'] }}</a></li>
                             @endforeach
 
                         </ul>
                     </div>
-
 
                     <!-- Social -->
                     <div class="widget">

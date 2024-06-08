@@ -36,9 +36,7 @@
                                         </li>
                                         <li class="list-inline-item">
                                             <ul class="card-meta-tag list-inline">
-                                                <li class="list-inline-item"><a href="tags.html">Color</a></li>
-                                                <li class="list-inline-item"><a href="tags.html">Recipe</a></li>
-                                                <li class="list-inline-item"><a href="tags.html">Fish</a></li>
+                                                <li class="list-inline-item"><a href="">{{$item['c_name']}}</a></li>
                                             </ul>
                                         </li>
                                     </ul>

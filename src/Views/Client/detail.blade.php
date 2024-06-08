@@ -16,7 +16,7 @@
                         <h1 class="h2">{{$post['title']}}</h1>
                         <ul class="card-meta my-3 list-inline">
                             <li class="list-inline-item">
-                                <a href="author-single.html" class="card-meta-author">
+                                <a href="" class="card-meta-author">
                                     <img src="{{url($post['a_avatar'])}}">
                                     <span>{{$post['a_name']}}</span>
                                 </a>
@@ -29,9 +29,16 @@
                             </li>
                             <li class="list-inline-item">
                                 <ul class="card-meta-tag list-inline">
-                                    <li class="list-inline-item"><a href="tags.html">Color</a></li>
-                                    <li class="list-inline-item"><a href="tags.html">Recipe</a></li>
-                                    <li class="list-inline-item"><a href="tags.html">Fish</a></li>
+                                    
+                                        <li class="list-inline-item"><a href="">{{$post['c_name']}}</a></li>
+                                    
+                                </ul>
+                            </li>
+                            <li class="list-inline-item">
+                                <ul class="card-meta-tag list-inline">
+                                    @foreach ($tags as $item)
+                                        <li class="list-inline-item"><a href="">#   {{$item['name']}}</a></li>
+                                    @endforeach
                                 </ul>
                             </li>
                         </ul>

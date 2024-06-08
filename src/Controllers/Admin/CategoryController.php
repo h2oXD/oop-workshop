@@ -77,7 +77,8 @@ class CategoryController extends Controller
             back(url("admin/categories/$id/edit"));
         } else {
             $data = [
-                'name' => $_POST['name'],
+                'name'              => $_POST['name'],
+                'updated_at'        => date('Y-m-d H:i:s'),
             ];
             $this->category->update($id,$data);
             $_SESSION['status'] = 'Thao tác thành công';

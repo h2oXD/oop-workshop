@@ -100,6 +100,7 @@ class UserController extends Controller
                 'fullName'   => $_POST['fullName']  ?? $user['fullName'],
                 'role'       => $_POST['role']      ?? $user['role'],
                 'email'      => $_POST['email']     ?? $user['email'],
+                'updated_at' => date('Y-m-d H:i:s'),
             ];
 
             $check = false;
