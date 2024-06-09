@@ -43,10 +43,12 @@ class HomeController extends Controller
 
         $this->renderClient(__FUNCTION__, $data);
     }
+
     public function detail($id)
     {   
         $data['post'] = $this->posts->postByID($id);
         $data['tags'] = $this->postTag->getTagByPostID($id);
+
         if(!empty($data['post'])){
             $view = [
                 'view' => $data['post']['view'] + 1
@@ -56,9 +58,11 @@ class HomeController extends Controller
 
         $this->renderClient(__FUNCTION__, $data);
     }
+
     public function list()
     {
-        $data['posts'] = $this->posts->allPostAndJoin();
+        [$data['posts'],$data['totalPage']] = $this->posts->paginate($_GET['page'] ?? 1);
+        // dd($data['totalPage']);
         $this->renderClient(__FUNCTION__, $data);
     }
 }

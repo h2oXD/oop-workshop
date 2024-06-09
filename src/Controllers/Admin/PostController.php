@@ -31,7 +31,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $data['posts'] = $this->post->allPostAndJoin();
+        $data['posts'] = $this->post->allPost();
         $this->renderAdmin(self::PATH_VIEW . __FUNCTION__, $data);
     }
 
@@ -50,7 +50,7 @@ class PostController extends Controller
             'title'             => 'required|min:3|max:100',
             'category_id'       => 'required|numeric',
             'author_id'         => 'required|numeric',
-            'excerpt'           => 'required|min:3|max:255',
+            'excerpt'           => 'required|min:3|max:156',
             'content'           => 'required|min:3',
             'status'            => 'required',
             'thubmnail'         => 'uploaded_file:0,2M,png,jpeg,jpg,webp',
@@ -117,7 +117,7 @@ class PostController extends Controller
             'title'             => 'required|min:3|max:100',
             'category_id'       => 'required|numeric',
             'author_id'         => 'required|numeric',
-            'excerpt'           => 'required|min:3|max:255',
+            'excerpt'           => 'required|min:3|max:156',
             'content'           => 'required|min:3',
             'status'            => 'required',
             'thubmnail'         => 'uploaded_file:0,2M,png,jpeg,jpg,webp',
