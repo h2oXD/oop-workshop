@@ -170,8 +170,12 @@ class PostController extends Controller
 
     public function delete($id)
     {
+        $post = $this->post->findByID($id);
         $this->postTag->deleteTagByPostID($id);
         $this->post->delete($id);
+        if (!empty($post['thumbnail']) && file_exists(PATH_ROOT . $post['thumbnail'])) {
+            unlink(PATH_ROOT . $post['thumbnail']);
+        }
         $_SESSION['status'] = 'Thao tác thành công';
         back(url('admin/posts'));
     }

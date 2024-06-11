@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <section class="section sm">
-        <h2 class="text-center mb-3">Danh sách bài viết</h2>
+        <h2 class="text-center mb-3">Danh mục {{$posts[0]['c_name']}} </h2>
 
         <div class="container">
             <div class="row">
@@ -54,7 +54,7 @@
                 @endphp
                 @if (isset($_GET['page']) && $_GET['page'] != 1)
                     <li class="page-item">
-                        <a href="{{ url('list/?page=' . ($_GET['page'] - 1)) }}" class="page-link">
+                        <a href="{{ url("list/{$posts[0]['c_id']}/?page=" . ($_GET['page'] - 1)) }}" class="page-link">
                             < </a>
                     </li>
                 @endif
@@ -63,7 +63,7 @@
                 </li>
                 @if (isset($_GET['page']) && $_GET['page'] < $totalPage)
                     <li class="page-item">
-                        <a href="{{ url('list/?page=' . ($_GET['page'] + 1)) }}" class="page-link">></a>
+                        <a href="{{ url("list/{$posts[0]['c_id']}/?page=" . ($_GET['page'] + 1)) }}" class="page-link">></a>
                     </li>
                 @endif
             </ul>

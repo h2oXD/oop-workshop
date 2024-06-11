@@ -11,7 +11,7 @@
                     <h1 class="mb-5">Bạn muốn đọc gì <br> ngày hôm nay?</h1>
                     <ul class="list-inline widget-list-inline">
                         @foreach ($categories as $item)
-                            <li class="list-inline-item"><a href="">{{ $item['name'] }}</a></li>
+                            <li class="list-inline-item"><a href="{{url("list/{$item['id']}")}}">{{ $item['name'] }}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -261,7 +261,7 @@
                                 <li class="list-inline-item">
                                     @foreach ($categories as $value)
                                         @if ($value['id'] == $item['category_id'])
-                                            <a href="">{{ $value['name'] }}<small
+                                            <a href="{{url("list/".$value['id'])}}">{{ $value['name'] }}<small
                                                     class="ml-auto">({{ $item['post_count'] }})</small></a>
                                         @endif
                                     @endforeach

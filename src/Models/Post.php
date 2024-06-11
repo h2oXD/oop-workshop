@@ -279,4 +279,44 @@ class Post extends Model
             ->setMaxResults(3)
             ->fetchAllAssociative();
     }
+
+    public function postByCategoriesId($id,$page = 1,$perPage = 6)
+    {
+        
+            $queryBuilder = clone ($this->queryBuilder);
+    
+            $totalPage = ceil($this->count() / $perPage);
+    
+            $offset = $perPage * ($page - 1);
+    
+            $data = $queryBuilder
+                ->select(
+                    'p.id',
+                    'p.title',
+                    'p.thumbnail',
+                    'p.content',
+                    'p.excerpt',
+                    'p.view',
+                    'p.status',
+                    'p.is_editors_pick',
+                    'p.is_trending',
+                    'p.is_show_home',
+                    'p.created_at',
+                    'p.updated_at',
+                    'c.id as c_id',
+                    'c.name as c_name',
+                    'a.name as a_name',
+                    'a.avatar as a_avatar',
+                )
+    
+                ->from($this->tableName, 'p')
+                ->innerJoin('p', 'categories', 'c', 'c.id = p.category_id')
+                ->innerJoin('p', 'authors', 'a', 'a.id = p.author_id')
+                ->where("p.status = 'published' AND c.id = $id")
+                ->setFirstResult($offset)
+                ->setMaxResults($perPage)
+                ->orderBy('id', 'desc')
+                ->fetchAllAssociative();
+            return [$data,$totalPage];
+    }
 }
