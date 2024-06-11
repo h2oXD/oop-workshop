@@ -47,7 +47,7 @@
                 @endforeach
             </div>
             <ul class="pagination justify-content-center mb-3">
-                @php
+                {{-- @php
                     if (!isset($_GET['page'])) {
                         $_GET['page'] = 1;
                     }
@@ -65,7 +65,7 @@
                     <li class="page-item">
                         <a href="{{ url("list/{$posts[0]['c_id']}/?page=" . ($_GET['page'] + 1)) }}" class="page-link">></a>
                     </li>
-                @endif
+                @endif --}}
             </ul>
             <div style="height: 200px"></div>
         </div>

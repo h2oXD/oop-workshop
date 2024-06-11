@@ -69,7 +69,7 @@ class HomeController extends Controller
     public function listByCategoriesId($id)
     {
         [$data['posts'],$data['totalPage']] = $this->posts->postByCategoriesId($id,$_GET['page'] ?? 1,6);
-        dd($data['totalPage']);
+        // dd($data['totalPage']);
         $this->renderClient(__FUNCTION__, $data);
         
     }
